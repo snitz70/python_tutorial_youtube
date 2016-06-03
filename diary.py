@@ -51,6 +51,20 @@ def view_entries():
     """View previous entries."""
     entries = Entry.select().order_by(Entry.timestamp.desc())
 
+    for entry in entries:
+        timestamp = entry.timestamp.strftime('%A, %B %d %Y %I:%M%p')
+        print(timestamp)
+        print('='*len(timestamp))
+        print(entry.content)
+        print('n) next entry')
+        print('q) return to main menu')
+
+        next_action = input('Action: [n/q] ').lower().strip()
+        if next_action == 'q':
+            break
+
+
+
 
 def delete_entry(entry):
     """Delete an entry."""

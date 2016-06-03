@@ -58,6 +58,7 @@ def view_entries(search_query=None):
         print(timestamp)
         print('='*len(timestamp))
         print(entry.content)
+        print('\n\n'+'='*len(timestamp))
         print('n) next entry')
         print('d) delete entry')
         print('q) return to main menu')
@@ -76,7 +77,8 @@ def search_entries():
 
 def delete_entry(entry):
     """Delete an entry."""
-
+    if input('Are you sure? ').lower().strip() == 'y':
+        entry.delete_instance(view_entries())
 
 
 
